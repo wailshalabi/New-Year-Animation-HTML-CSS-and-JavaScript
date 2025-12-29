@@ -1,0 +1,94 @@
+:root{
+  --bg1:#04040f;
+  --bg2:#0a0a22;
+  --text:#ffffff;
+}
+
+*{ box-sizing:border-box; }
+html, body { height:100%; margin:0; overflow:hidden; }
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 50% 25%, rgba(90,120,255,.22), transparent 60%),
+    radial-gradient(900px 600px at 20% 70%, rgba(0,220,255,.14), transparent 55%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+}
+
+canvas{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display:block;
+}
+
+.center{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: .35rem;
+  text-align: center;
+  pointer-events: none;
+  padding: 2rem;
+  text-shadow: 0 12px 40px rgba(0,0,0,.55);
+}
+
+h1{
+  margin: 0;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.year{
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, #9cf, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 2.6s linear infinite;
+  filter: drop-shadow(0 14px 30px rgba(0,0,0,.5));
+}
+
+.controls{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  pointer-events: auto; /* enable clicking buttons */
+}
+
+button{
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.25);
+  color: #fff;
+  padding: .65rem .9rem;
+  border-radius: .8rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform .08s ease, background .2s ease;
+}
+
+button:hover{ background: rgba(255,255,255,.12); }
+button:active{ transform: translateY(1px); }
+
+.hint{
+  margin: .75rem 0 0;
+  opacity: .75;
+  font-size: .95rem;
+  pointer-events: none;
+}
+
+@keyframes float{
+  0%,100%{ transform: translateY(0) }
+  50%{ transform: translateY(-10px) }
+}
+@keyframes shimmer{
+  0%{ background-position: 0% 50% }
+  100%{ background-position: 200% 50% }
+}
